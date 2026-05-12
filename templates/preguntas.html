@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Preguntas - {{ seccion }}</title>
+</head>
+<body>
+    <a href="/seccion/{{ seccion }}">← Volver a la sección</a>
+    <h1>Preguntas sobre {{ seccion }}</h1>
+
+    <form method="POST" action="/responder/{{ seccion }}">
+        {% for i, pregunta in enumerate(preguntas) %}
+        <div>
+            <p><strong>{{ i + 1 }}. {{ pregunta.pregunta }}</strong></p>
+
+            {% if pregunta.tipo == "opcion" %}
+                {% for opcion in pregunta.opciones %}
+                <label>
+                    <input type="radio" name="respuesta_{{ i }}" value="{{ opcion }}">
+                    {{ opcion }}
+                </label><br>
+                {% endfor %}
+
+            {% elif pregunta.tipo == "verdadero_falso" %}
+                <label>
+                    <input type="radio" name="respuesta_{{ i }}" value="Verdadero">
+                    Verdadero
+                </label><br>
+                <label>
+                    <input type="radio" name="respuesta_{{ i }}" value="Falso">
+                    Falso
+                </label>
+            {% endif %}
+        </div>
+        <br>
+        {% endfor %}
+
+        <button type="submit">Enviar respuestas</button>
+    </form>
+</body>
+</html>
