@@ -16,7 +16,13 @@ def index():
 def seccion(nombre):
     if nombre not in SECCIONES:
         return redirect(url_for("index"))
-    return render_template("seccion.html", seccion=nombre)
+    datos = {
+        "reglas": REGLAS,
+        "evaluacion": EVALUACION,
+        "objetivos": OBJETIVOS,
+        "fechas": FECHAS,
+    }
+    return render_template("seccion.html", seccion=nombre, datos=datos[nombre])
 
 
 if __name__ == "__main__":

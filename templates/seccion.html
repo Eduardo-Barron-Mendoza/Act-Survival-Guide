@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Survival Guide: El Reto Móvil</title>
+</head>
+<body>
+
+    <a href="/">← Volver al inicio</a>
+
+    {% if seccion == "reglas" %}
+        <h1>La Cámara de las Reglas</h1>
+        <ol>
+            {% for regla in datos %}
+                <li>{{ regla }}</li>
+            {% endfor %}
+        </ol>
+
+    {% elif seccion == "evaluacion" %}
+        <h1>El Oráculo de las Notas</h1>
+        <table border="1">
+            <tr>
+                <th>Criterio</th>
+                <th>1er Parcial</th>
+                <th>2do Parcial</th>
+                <th>3er Parcial</th>
+            </tr>
+            {% for i in range(datos.criterios|length) %}
+            <tr>
+                <td>{{ datos.criterios[i] }}</td>
+                <td>{{ datos.parciales["1P"][i] }}%</td>
+                <td>{{ datos.parciales["2P"][i] }}%</td>
+                <td>{{ datos.parciales["3P"][i] }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    {% elif seccion == "objetivos" %}
+        <h1>Skills a Desbloquear</h1>
+        <h2>Objetivo general</h2>
+        <p>{{ datos.general }}</p>
+        <h2>Competencias</h2>
+        <p>{{ datos.competencias }}</p>
+
+    {% elif seccion == "fechas" %}
+        <h1>La Línea del Tiempo</h1>
+        <ul>
+            {% for nombre, fecha in datos %}
+                <li><strong>{{ nombre }}:</strong> {{ fecha }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>
