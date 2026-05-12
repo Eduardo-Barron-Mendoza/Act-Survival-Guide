@@ -1,3 +1,6 @@
+import random
+
+
 PREGUNTAS = {
     "reglas": [
         {
@@ -211,3 +214,7 @@ PREGUNTAS = {
         },
     ],
 }
+
+def get_preguntas(seccion, cantidad=2):
+    banco = PREGUNTAS.get(seccion, [])
+    return random.sample(banco, min(cantidad, len(banco)))
