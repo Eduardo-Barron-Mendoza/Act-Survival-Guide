@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
-from contenido import REGLAS, EVALUACION, OBJETIVOS, FECHAS
+
 from preguntas import get_preguntas
 
 
@@ -20,13 +20,7 @@ def index():
 def seccion(nombre):
     if nombre not in SECCIONES:
         return redirect(url_for("index"))
-    datos = {
-        "reglas": REGLAS,
-        "evaluacion": EVALUACION,
-        "objetivos": OBJETIVOS,
-        "fechas": FECHAS,
-    }
-    return render_template("seccion.html", seccion=nombre, datos=datos[nombre])
+    return render_template("seccion.html", seccion=nombre)
 
 @app.route("/preguntas/<nombre>")
 def preguntas(nombre):

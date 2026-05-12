@@ -11,9 +11,23 @@
     {% if seccion == "reglas" %}
         <h1>La Cámara de las Reglas</h1>
         <ol>
-            {% for regla in datos %}
-                <li>{{ regla }}</li>
-            {% endfor %}
+            <li>Se requiere 80% de asistencia para tener derecho a evaluación parcial y 80% de trabajos en clase.</li>
+            <li>Se permiten 10 minutos de tolerancia y si el alumno llega después de este tiempo puede permanecer en la clase, pero no se tomará la asistencia (Solamente en los horarios de inicio:7:00a.m y 14:00 p.m).</li>
+            <li>Las faltas deberán estar justificadas mediante el correo institucional con un plazo máximo de 24 horas posteriores a la hora de falta en clase mediante correo del tutor (a), justificantes entregados fuera de la fecha límite permitido no se aceptan, únicamente se aceptarán recetas médicas y citatorios jurídicos.(De forma física deben ser presentados al tutor para ser validados y de forma posterior emitidos).</li>
+            <li>Las tareas y trabajos deberán subirlas al Classroom de forma individual y no se recibirán de manera extemporánea.(Salvo previo justificante validado por el tutor)</li>
+            <li>Las tareas y trabajos presentarlos en tiempo y forma. La demora de un trabajo o tarea sin justificante y/o con justificante fuera del límite no se aceptan.</li>
+            <li>Utilizar el correo institucional para trabajar bajo la plataforma Google Classroom.</li>
+            <li>El plagio o copia de trabajos y/o exámenes, será condicionado a reprobar a la asignatura y se reportará al área correspondiente.</li>
+            <li>Cualquier deshonestidad académica será sancionada reprobando el parcial sin derecho a examen final.</li>
+            <li>En circunstancia de indisciplina o falta de respeto por parte del alumno hacia docentes, administrativos, compañeros o cualquier persona perteneciente a la universidad, se realizará una primera llama de atención, si el alumno hace caso omiso tendrá que abandonar el aula, tres incidencias de este tipo el alumno no tendrá derecho a examen final o parcial.</li>
+            <li>Uso de laptops y/o dispositivos móviles quedará limitados a uso exclusivo de las actividades que así lo requieran.</li>
+            <li>Prohibido el uso de audífonos durante la clase.</li>
+            <li>Prohibido comer y/o tomar líquidos en el salón.</li>
+            <li>Prohibido sentarse encima de las mesas, así como columpiarse en las sillas.</li>
+            <li>Todo tema académico debe ser revisado primeramente por parte del alumno con el docente, de no resolverse, pasar con su respectivo tutor, y de ser necesario con la coordinación de tutores. En caso de no solucionarse pasar a la dirección del programa educativo (debe mantenerse este seguimiento de forma obligatoria).</li>
+            <li>Cualquier situación no prevista en el presente reglamento pasar directamente con la dirección del programa educativo.</li>
+            <li>El día destinado a entrega de calificaciones todos los estudiantes deben estar presentes, ese día se entregarán exámenes y se brindará retroalimentación.</li>
+            <li>Este reglamento entra en vigor después de que se firme o se acepte por la mayoría de los estudiantes asistentes a la primera sesión de la materia, una vez firmado o aceptado por el 50% más el jefe de grupo, es vigente para todo alumno inscrito en el curso aunque no esté presente en la primera sesión.</li>
         </ol>
 
     {% elif seccion == "evaluacion" %}
@@ -25,32 +39,50 @@
                 <th>2do Parcial</th>
                 <th>3er Parcial</th>
             </tr>
-            {% for i in range(datos.criterios|length) %}
             <tr>
-                <td>{{ datos.criterios[i] }}</td>
-                <td>{{ datos.parciales["1P"][i] }}%</td>
-                <td>{{ datos.parciales["2P"][i] }}%</td>
-                <td>{{ datos.parciales["3P"][i] }}%</td>
+                <td>Evidencia de conocimiento</td>
+                <td>40%</td>
+                <td>40%</td>
+                <td>10%</td>
             </tr>
-            {% endfor %}
+            <tr>
+                <td>Evidencia de desempeño</td>
+                <td>20%</td>
+                <td>20%</td>
+                <td>10%</td>
+            </tr>
+            <tr>
+                <td>Evidencia de producto</td>
+                <td>30%</td>
+                <td>30%</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>Proyecto integrador</td>
+                <td>10%</td>
+                <td>10%</td>
+                <td>50%</td>
+            </tr>
         </table>
 
     {% elif seccion == "objetivos" %}
         <h1>Skills a Desbloquear</h1>
         <h2>Objetivo general</h2>
-        <p>{{ datos.general }}</p>
+        <p>Desarrollará aplicaciones móviles mediante lenguajes de programación, entornos de desarrollo, diseño de interfaces de usuario, arquitecturas, patrones de diseño y herramientas de programación móvil.</p>
         <h2>Competencias</h2>
-        <p>{{ datos.competencias }}</p>
+        <p>Soluciones tecnológicas multiplataforma de software web y móvil utilizando programación orientada a objetos, frameworks, bases de datos, estándares de calidad y diseño.</p>
 
     {% elif seccion == "fechas" %}
         <h1>La Línea del Tiempo</h1>
         <ul>
-            {% for nombre, fecha in datos %}
-                <li><strong>{{ nombre }}:</strong> {{ fecha }}</li>
-            {% endfor %}
+            <li><strong>1er Parcial:</strong> 02 de Junio 2026</li>
+            <li><strong>2do Parcial:</strong> 07 de Julio 2026</li>
+            <li><strong>3er Parcial:</strong> 11 de Agosto 2026</li>
+            <li><strong>Examen Final:</strong> 17 de Agosto 2026</li>
         </ul>
     {% endif %}
 
+    <br>
     <a href="/preguntas/{{ seccion }}">Responder preguntas</a>
 
 </body>
