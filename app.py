@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, session
 
 from preguntas import get_preguntas, PREGUNTAS
 
@@ -27,6 +27,9 @@ def index():
 def seccion(nombre):
     if nombre not in SECCIONES:
         return redirect(url_for("index"))
+    indice = SECCIONES.index(nombre)
+    if indice > 0 and not session.get(SECCIONES[indice - 1]):
+        return redirect(url_for("index"))
     return render_template("seccion.html", seccion=nombre)
 
 @app.route("/preguntas/<nombre>")
@@ -53,6 +56,7 @@ def responder(nombre):
         i += 1
 
     if correctas == i:
+        session[nombre] = True
         return render_template("preguntas.html", seccion=nombre, preguntas=[], resultado="paso", siguiente=SIGUIENTE[nombre])
     else:
         nuevas = get_preguntas(nombre)
